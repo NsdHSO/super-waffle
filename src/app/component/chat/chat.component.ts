@@ -23,6 +23,6 @@ export class ChatComponent implements OnInit {
       }
     });
 
-    interval(90000).subscribe(() => this.messages.pop())
+    interval(100000).subscribe(() => {this.messages.pop(); console.log("POP")})
   }
 }
