@@ -1,4 +1,5 @@
 import {Component, OnInit} from "@angular/core";
+import {interval} from "rxjs";
 import {Message, WebsocketService} from "../../service/websocket.service";
 
 @Component({
@@ -7,7 +8,7 @@ import {Message, WebsocketService} from "../../service/websocket.service";
   styleUrls: ["./chat.component.scss"],
 })
 export class ChatComponent implements OnInit {
-  messages : Message[] = [{content: 'asdasd', source:'dasdsa'}] as Message[];
+  messages : Message[] = [] as Message[];
 
   constructor(private readonly _websocket : WebsocketService) {}
 
@@ -21,5 +22,7 @@ export class ChatComponent implements OnInit {
         this.messages = [...this.messages, messages];
       }
     });
+
+    interval(90000).subscribe(() => this.messages.pop())
   }
 }

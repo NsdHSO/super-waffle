@@ -1,4 +1,9 @@
-<div class="container" *ngFor="let message of messages" >
+<div class="header">
+  Chat Message
+</div>
+<div class="container"
+     *ngFor="let message of messages"
+     >
   <div class="icon"></div>
-  <app-tweet [message]="message"></app-tweet>
+  <app-tweet  [message]="message"></app-tweet>
 </div>
