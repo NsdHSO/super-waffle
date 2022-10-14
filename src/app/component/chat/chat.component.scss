@@ -1,0 +1,25 @@
+.container{
+  width: 30%;
+  box-shadow: 2px 1px 14px 1px rgb(0 0 0 / 61%);
+  height: 3.25rem;
+  border: 2px solid rgba(28, 110, 164, 0.31);
+  border-radius: 20px 0 20px 0;
+  padding: 1rem;
+  position: relative;
+  margin: 1rem 0;
+
+
+  .icon{
+    content: "";
+    background-image: url('https://media.cnn.com/api/v1/images/stellar/prod/220906112534-james-webb-tarantula-nebula.jpg?c=16x9&q=h_540,w_960,c_fill');
+    background-size: auto 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    border: 2px solid rgba(28, 110, 164, 0.31);
+    border-radius: 20px 0 20px 0;
+  }
+}
