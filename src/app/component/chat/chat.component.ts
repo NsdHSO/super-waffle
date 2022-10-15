@@ -18,11 +18,11 @@ export class ChatComponent implements OnInit {
         this.messages = [...this.messages, messages];
       }
       else {
-        this.messages.pop();
+        this.messages.shift();
         this.messages = [...this.messages, messages];
       }
     });
 
-    interval(100000).subscribe(() => {this.messages.pop(); console.log("POP")})
+    interval(100000).subscribe(() => {this.messages.shift(); console.log("POP")})
   }
 }
