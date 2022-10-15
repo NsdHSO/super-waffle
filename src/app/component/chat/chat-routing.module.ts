@@ -4,7 +4,7 @@ import {ChatComponent} from "./chat.component";
 
 const routes : Routes = [
   {
-    path: "",
+    path: ":id",
     component: ChatComponent,
   },
 ];

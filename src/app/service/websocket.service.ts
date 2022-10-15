@@ -1,10 +1,12 @@
 import {Injectable} from "@angular/core";
+import {ActivatedRoute} from "@angular/router";
 import {Subject} from "rxjs";
 import * as tmi from "tmi.js";
 
 const opts = {
   channels: [
     "nsdhso",
+    "kyootbot",
   ],
 };
 
@@ -17,10 +19,20 @@ export interface Message {
   providedIn: "root",
 })
 export class WebsocketService {
-  client : tmi.Client            = tmi.Client(opts);
+  client : tmi.Client;
   messages$ : Subject<Message> = new Subject<Message>();
+  opts                         = {
+    channels: [] as string[],
+  };
 
-  constructor() {
+  constructor(private readonly _activatedRoute : ActivatedRoute) {
+
+
+
+    this.opts   = {
+      channels: [],
+    };
+    this.client = tmi.Client(this.opts);
 // Connect to Twitch:
     this.client.connect();
     this.client.on("message",
@@ -30,6 +42,10 @@ export class WebsocketService {
   }
 
   public async ngOnInit() {
+
+    this._activatedRoute.params.subscribe(r => {
+      console.log((r))
+    })
     this.client.on("message",
       (msg) => {console.log(msg);});
   }
@@ -37,11 +53,10 @@ export class WebsocketService {
 // Called every time a message comes in
   onMessageHandler(target : any, context : any, msg : any, self : any) {
     if(self) { return; } // Ignore messages from the bot
-    const user = {
+    const user        = {
       source: context.username,
       content: msg,
     } as Message;
-
     // Remove whitespace from chat message
     const commandName = msg.trim();
     // If the command is known, let's execute it
@@ -67,5 +82,8 @@ export class WebsocketService {
 // Called every time the bot connects to Twitch chat
   onConnectedHandler(addr : any, port : any) {
     console.log(`* Connected to ${addr}:${port}`);
+  }
+  pushChannel(channel: string){
+    this.opts?.channels.push(channel)
   }
 }
