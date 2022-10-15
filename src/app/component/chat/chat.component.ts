@@ -12,10 +12,6 @@ export class ChatComponent implements OnInit {
   messages : Message[] = [] as Message[];
 
   constructor(private readonly _websocket : WebsocketService, private readonly _activatedRoute : ActivatedRoute) {
-    this.messages.push({content:"sDhdhdhhdhdhdhdhdhdhdhdhdhdhshdhdhdhdhdhdhdhdhdb" +
-        "db   dhdhchdhsjsjsjxksjxbHxjxjsjcjsjcjxjdhdDhdhdhhdhdhdhdhdhdhdhdhd   hdhshdhdhdhdhdhdhdhdhdbdbdhdhchdhsjsjs" +
-        "  jxksjxbHxjxjsjcjsjcjxjdhdDhdhdhhdhdhdhd" +
-        "hdhdhdhdhdhdhshdhdhdhdhdhdhdhdhdbdbdhdhchdhsjsjsjxksjxbHxjxjsjcjsjcjxjdhd", source: 'dasdasd'})
   }
 
   public ngOnInit() : void {
